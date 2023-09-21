@@ -11,6 +11,7 @@ def hello_world(request):
 
 
 def hello_china(request):
+    raise
     return HttpResponse("Hello China!")
 
 

@@ -21,3 +21,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('hello/', include('hello.urls')),
 ]
+
+handler500 = 'djangoProject.views.page_500'
