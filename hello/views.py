@@ -1,4 +1,4 @@
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse, FileResponse
 
 # Create your views here.
 from django.shortcuts import render
@@ -49,3 +49,38 @@ def render_str(request):
 def render_html(request):
     """ render 函数的使用 """
     return render(request, 'index.html')
+
+
+def http_request(request):
+    """ 请求练习 """
+    # 1. 请求方式
+    print(request.method)
+    # 2. 请求头的信息
+    headers = request.META
+    print(headers)
+    ua = request.META.get('HTTP_USER_AGENT', None)
+    print(ua)
+    print(request.headers)
+    print(request.headers['User-Agent'])
+    print(request.headers['user-agent'])
+    # 3.获取请求参数
+    name = request.GET.get('name', '')
+    print(name)
+    return HttpResponse('响应')
+
+
+def http_response_json(request):
+    """ 响应练习 """
+    # resp = HttpResponse('响应内容', status=201)
+    # resp.status_code = 204
+    # print(resp.status_code)
+    # return resp
+    user_info = {
+        'name': '张三',
+        'age': 34
+    }
+    return JsonResponse(user_info)
+
+
+def http_response_file(request):
+    return FileResponse(open('myfile.png', 'rb'))
