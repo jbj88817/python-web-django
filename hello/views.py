@@ -85,7 +85,7 @@ def http_response_json(request):
 
 
 def http_response_file(request):
-    return FileResponse(open('myfile.png', 'rb'))
+    return FileResponse(open('media/myfile.png', 'rb'))
 
 
 def no_data_404(request):
