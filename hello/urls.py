@@ -1,7 +1,7 @@
 from django.urls import path, re_path
 
 from hello.views import hello_world, hello_china, hello_html, article_list, search, render_str, render_html, \
-    http_request, http_response_json, http_response_file, no_data_404, article_detail
+    http_request, http_response_json, http_response_file, no_data_404, article_detail, index, HomeView
 
 urlpatterns = [
     path('world/', hello_world, name='hello_world'),
@@ -17,4 +17,6 @@ urlpatterns = [
     path('http/resp/file', http_response_file, name='http_response_file'),
     path('not/found/', no_data_404, name='no_data_404'),
     path('article/<int:article_id>/', article_detail, name='article_detail'),
+    path('index/', index, name='index'),
+    path('home/', HomeView.as_view(), name='home'),
 ]

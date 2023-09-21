@@ -4,6 +4,7 @@ from django.http import HttpResponse, JsonResponse, FileResponse, HttpResponseRe
 from django.shortcuts import render, redirect
 from django.template.loader import render_to_string
 from django.urls import reverse
+from django.views.generic import TemplateView
 
 
 def hello_world(request):
@@ -105,3 +106,11 @@ def article_detail(request, article_id):
         # return redirect('/hello/not/found/')
         return redirect('http://www.imooc.com')
     return HttpResponse('文章{}的内容'.format(article_id))
+
+
+def index(request):
+    return render(request, 'index.html')
+
+
+class HomeView(TemplateView):
+    template_name = 'home.html'
